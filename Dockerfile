@@ -1,6 +1,6 @@
 #Multi-step build
 #as builder - we assign the name of the first stage
-FROM node:alpine as builder
+FROM node:alpine
 WORKDIR '/app'
 #run npm install in order to install dependencies
 COPY package*.json ./

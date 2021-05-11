@@ -5,7 +5,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t dockeur_react -f dev.Dockerfile .
+  - docker build -t dockeur_react Dockerfile .
 
 script:
   - docker run -e CI=true dockeur_react npm run test

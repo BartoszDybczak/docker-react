@@ -1,22 +1,23 @@
 version: '3'
 services:
   web:
+    stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
     build:
       context: .
       dockerfile: dev.Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - /app/node_modules
-      - C:\Users\barto\OneDrive\Pulpit\dockerprojects\react\frontend:/app
-
+      - .:/app
   tests:
+    stdin_open: true
     build:
       context: .
       dockerfile: dev.Dockerfile
     volumes:
       - /app/node_modules
-      - C:\Users\barto\OneDrive\Pulpit\dockerprojects\react\frontend:/app
-    command: ["npm", "run", "test"]
+      - .:/app
+    command: ['npm', 'run', 'test']

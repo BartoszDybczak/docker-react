@@ -13,6 +13,8 @@ RUN npm run build
 #2nd phase - download nginx imageand start it
 #Get nginx image
 FROM nginx
+#we need to specify a port if we want to depoly this image on AWS - aws will map EXPOSE port to 80
+EXPOSE 80
 #Copy --from=builder - get and copy contents of /app/build directory from the first builder phase image and paste it inside /usr/share/nginx/html folder
 COPY --from=builder /app/build /usr/share/nginx/html
 #nginx will start automatically we don't need to specify command

@@ -5,18 +5,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t dockeur_react -f dev.Dockerfile .
+  - docker build -t docker-test -f dev.Dockerfile .
 
 script:
-  - docker run -e CI=true dockeur_react npm run test
+  - docker run -e CI=true docker-test npm run test
 
 deploy:
   provider: elasticbeanstalk
   region: 'eu-west-2'
-  app: 'dockeur_react'
-  env: 'Dockeurreact-env'
+  app: 'docker-test'
+  env: 'Dockertest-env'
   bucket_name: 'elasticbeanstalk-eu-west-2-276878536813'
-  bucket_path: '"dockeur_react'
+  bucket_path: 'docker-test'
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY

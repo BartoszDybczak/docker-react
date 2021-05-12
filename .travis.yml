@@ -5,7 +5,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t docker-test -f dev.Dockerfile .
+  - docker build -t docker-test Dockerfile .
 
 script:
   - docker run -e CI=true docker-test npm run test
